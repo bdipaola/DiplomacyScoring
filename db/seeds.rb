@@ -40,13 +40,13 @@ end
 #create player sets for games, each player's center count, country, and open_move
 Board.all.each do |board|
 	player_set = []
-	center_count = 0
 	centers_remain = 27
 	player_names.shuffle!
-	player_set = player_names.slice(0,6)
+	player_set = player_names.slice(0,7)
 	
 	player_set.each_with_index do |player, index|
-		add_centers = centers_remain >= 17 ? rand(0..17) : rand(0..centers_remain)
+		center_count = 0
+		add_centers = centers_remain >= 17 ? rand(0..16) : rand(0..centers_remain)
 		center_count += (add_centers + 1)
 
 		countries.shuffle!
@@ -58,10 +58,15 @@ end
 
 #creating score for each player
 Board.all.each do |board|
-	sum_of_squares = Game.where(board_id: board.id).map{ |game| game.center_count }.reduce(:+)
+	sum_of_squares = Game.where(board_id: board.id).map{ |game| game.center_count ** 2 }.reduce(:+)
 	board.players.each do |player|
 		game_record = Game.find_by(board_id: board.id, player_id: player.id)
-		game_record.update(score: game_record.center_count ** 2 / sum_of_squares)
+	
+		player_centers_squared = game_record.center_count ** 2
+		squared_score_for_game = player_centers_squared / sum_of_squares.to_f
+		normalized_score_for_game = (squared_score_for_game * 100).round(4)
+		
+		game_record.update(score: normalized_score_for_game)
 	end
 end
 

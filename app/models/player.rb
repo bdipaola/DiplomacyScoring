@@ -10,4 +10,5 @@ class Player < ActiveRecord::Base
 			player.update(total_score: player_game_scores.first(3).reduce(:+))
 		end
 	end
+
 end
