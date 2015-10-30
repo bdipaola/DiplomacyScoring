@@ -65,4 +65,6 @@ Board.all.each do |board|
 	end
 end
 
+#calculating total scores
+Player.calculate_scores
 
