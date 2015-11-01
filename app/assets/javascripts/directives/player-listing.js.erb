@@ -1,0 +1,14 @@
+angular.module('DiplomacyApp')
+.directive('playerinfo', function(){
+	var rank = 0;
+	return {
+		scope: {
+			playerinfo: '=',
+		},
+		replace: false,
+		templateUrl: "<%= asset_path('_player-listing.html') %>",
+		link: function($scope){
+			$scope.rank = rank++
+		}
+	}
+})

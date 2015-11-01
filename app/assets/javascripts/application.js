@@ -16,8 +16,9 @@
 //= require bootstrap
 //= require angular
 //= require angular-route
-//= require angular-app
+//= require app
 //= require_tree ./services
 //= require_tree ./directives
 //= require_tree ./filters
+//= require_tree ./factories
 //= require_tree ./controllers
