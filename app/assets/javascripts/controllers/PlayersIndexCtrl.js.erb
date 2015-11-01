@@ -1,5 +1,10 @@
 angular.module("DiplomacyApp")
-.controller('PlayersIndexCtrl', function($scope, $routeParams, $location, $q){
+.controller('PlayersIndexCtrl', function($scope, $routeParams, $location, playerList){
+	$scope.players = playerList.data;
+	playerList.loadPlayers();
 
+	$scope.viewPlayer = function(playerId){
+		$location.url('/players/' + playerId);
+	};
 })
-.$inject = ['$scope', '$routeParams', '$location', '$q'];
+.$inject = ['$scope','$routeParams', '$location', 'playerList'];
