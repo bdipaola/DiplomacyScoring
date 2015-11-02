@@ -5,5 +5,9 @@ angular.module("DiplomacyApp")
 	playerShow.loadPlayer($scope.playerId);
 
 	$scope.player = playerShow.data;
+
+	$scope.viewGame = function(gameId){
+		$location.url('/games/' + gameId);
+	};
 })
 .$inject = ['$scope','$routeParams', '$location', 'playerShow'];

@@ -1,7 +1,26 @@
-{{player}}
-{{player.player.name}}
-{{player.player.total_score}}
-
-<div ng-repeat="game in player.player.games">
-{{game.country}} - {{game.center_count}}
+<div class="container">
+	<h1>{{player.player.name}}
+	<small>Total Score: {{player.player.total_score}}</small></h1>
+	<br>
+	<div class="panel panel-default">
+  	<div class="panel-heading">
+    	<h3 class="panel-title">Games</h3>
+  	</div>
+ 		<table class="table table-hover">
+			<thead>
+				<tr>
+				  <th>Centers</th>
+				  <th>Score</th>
+				  <th>Country</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="game in player.player.games" ng-click="viewGame(game.id)">
+				  <td>{{game.center_count}}</td>
+				  <td>{{game.score}}</td>
+				  <td>{{game.country}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
