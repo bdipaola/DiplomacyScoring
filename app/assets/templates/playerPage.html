@@ -1,1 +1,7 @@
-player page!
+{{player}}
+{{player.player.name}}
+{{player.player.total_score}}
+
+<div ng-repeat="game in player.player.games">
+{{game.country}} - {{game.center_count}}
+</div>

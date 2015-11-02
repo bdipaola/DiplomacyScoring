@@ -3,7 +3,7 @@ angular.module("DiplomacyApp", ['ngRoute'])
   '$routeProvider', function($routeProvider,$locationProvider) {
     $routeProvider
       .when('/', { templateUrl: '../assets/playersIndex.html', controller: 'PlayersIndexCtrl' } )
-			.when('/players/:id', { templateUrl: '../assets/playerPage.html', controller: 'PlayersShowCtrl' } )      
+			.when('/players/:id', { templateUrl: '../assets/playerPage.html', controller: 'PlayerShowCtrl' } )      
       .otherwise( {templateUrl: '../assets/playersIndex.html', controller: 'PlayersIndexCtrl'} );
   }
 ])
