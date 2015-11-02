@@ -11,4 +11,14 @@ class Player < ActiveRecord::Base
 		end
 	end
 
+	def player_games_hash(games) 
+		player_hash = { 
+			name: self.name,
+			total_score: self.total_score,
+			games: []
+		}
+		games.each { |game| player_hash[:games] << { center_count: game.center_count, score: game.score, country: game.country } }
+		return player_hash
+	end
+
 end

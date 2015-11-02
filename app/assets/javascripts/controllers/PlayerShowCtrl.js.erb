@@ -1,0 +1,9 @@
+angular.module("DiplomacyApp")
+.controller('PlayerShowCtrl', function($scope, $routeParams, $location, playerShow){
+	$scope.playerId = $routeParams.id;	
+	
+	playerShow.loadPlayer($scope.playerId);
+
+	$scope.player = playerShow.data;
+})
+.$inject = ['$scope','$routeParams', '$location', 'playerShow'];
