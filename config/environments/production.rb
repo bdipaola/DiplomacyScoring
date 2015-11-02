@@ -40,7 +40,8 @@ Rails.application.configure do
   config.assets.precompile += %w( angular-route.js )
   config.assets.precompile += %w( angular-app.js )
   config.assets.precompile += %w( PlayersIndexCtrl.js.erb )
-
+  config.assets.precompile += %w( PlayerShowCtrl.js.erb )
+  
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
