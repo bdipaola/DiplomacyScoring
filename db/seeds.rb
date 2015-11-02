@@ -28,7 +28,7 @@ turkey_moves = ["A Con - Bul, F Ank - Bla, A Smy - Con", "A Con - Bul, F Ank - C
 moves = [austria_moves, england_moves, russia_moves, turkey_moves, france_moves, italy_moves, germany_moves]
 
 #create boards
-4.times do |count|
+10.times do |count|
 	Board.create!(number: count + 1, location: locations.sample)
 end
 
