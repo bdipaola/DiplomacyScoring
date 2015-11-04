@@ -1,0 +1,14 @@
+angular.module("DiplomacyApp")
+.controller('PlayerEditCtrl', function($scope, $routeParams, $location, playerShow){
+	$scope.playerId = $routeParams.id;
+	playerShow.loadPlayer($scope.playerId);
+	
+	$scope.player = playerShow.data;
+
+	$scope.editPlayer = function(){
+		var playerData = {id: $scope.player.player.id, name: $scope.player.player.name, total_score: $scope.player.player.total_score};
+		playerShow.updatePlayer(playerData);
+	};
+	
+})
+.$inject = ['$scope','$routeParams', '$location', 'playerShow'];

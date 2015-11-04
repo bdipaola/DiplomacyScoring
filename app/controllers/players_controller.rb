@@ -16,4 +16,18 @@ class PlayersController < ApplicationController
     end
 	end
 
+	def update
+		player = Player.find(params[:id])
+		player.update(name: params[:name], total_score: params[:total_score])
+		respond_to do |format|
+      format.json { render json: player }
+    end
+	end
+
+	private
+	def player_params
+		params.require(:player).permit(:name, :total_score)
+	end
+
+
 end

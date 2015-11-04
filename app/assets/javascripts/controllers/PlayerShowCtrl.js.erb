@@ -6,6 +6,10 @@ angular.module("DiplomacyApp")
 
 	$scope.player = playerShow.data;
 
+	$scope.editPlayer = function(playerId){
+		$location.url('/players/' + playerId + '/edit');
+	};
+
 	$scope.viewGame = function(gameId){
 		$location.url('/games/' + gameId);
 	};

@@ -12,7 +12,8 @@ class Player < ActiveRecord::Base
 	end
 
 	def player_games_hash(games) 
-		player_hash = { 
+		player_hash = {
+			id: self.id, 
 			name: self.name,
 			total_score: self.total_score,
 			games: []
