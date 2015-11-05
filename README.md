@@ -1,6 +1,6 @@
 # DiplomacyScoring
 <p>
-  <strong>Status:</strong> In process - currently working on CRUD functionality
+  <strong>Status:</strong> In process - currently working on CRUD functionality<br>
   <strong>Technologies:</strong> Ruby on Rails, Angular, Bootstrap, D3
 </p>
 <h3>Description</h3>
