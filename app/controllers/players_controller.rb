@@ -24,6 +24,14 @@ class PlayersController < ApplicationController
     end
 	end
 
+	def destroy
+		player = Player.find(params[:id])
+		player.destroy
+		respond_to do |format|
+      format.json { render json: player }
+    end
+	end
+
 	private
 	def player_params
 		params.require(:player).permit(:name, :total_score)

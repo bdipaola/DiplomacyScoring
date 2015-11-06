@@ -1,5 +1,5 @@
 angular.module("DiplomacyApp")
-.factory('playerShow', ['$http', function($http){
+.factory('playerShow', ['$http', '$location', function($http, $location){
   
   var playerData = { 
     data: {
@@ -17,19 +17,31 @@ angular.module("DiplomacyApp")
     })
     .error(function(){
       console.error('Failed to load player data.');
-    })
+    });
 	};
 
   playerData.updatePlayer = function(playerData){
     $http.put('/players/' + playerData.id + '.json', playerData)
-    .success(function(data){
-      console.log(data);
-      console.log("update got here!")
-    })
-    .error(function(){
+    .then(function(data){
+      console.log("Successfully updated record.")
+      $location.url('/players/' + data.data.id);
+    },
+    function(){
       console.error('Failed to update data.');
-    })
+    });
   };
+
+  playerData.deletePlayer = function(playerId){
+    $http.delete('/players/' + playerId + '.json')
+    .then(function(data){
+      console.log('Successfully deleted record.');
+      console.log(data);
+      $location.url('/');
+    },
+    function(){
+      console.error('Failed to delete record.');
+    });
+  }
 
 	return playerData;
 }]);
