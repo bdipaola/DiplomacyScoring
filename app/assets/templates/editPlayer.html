@@ -3,8 +3,6 @@
 	<form ng-submit="editPlayer()">
 		<label><strong>Name</strong></label>
     <input ng-model="player.player.name" type="text" maxlength="250" value="{{player.player.name}}"/>
-    <label><strong>Total Score</strong></label>
-    <input ng-model="player.player.total_score" type="number" step="any" value="{{player.player.total_score}}"/><br><br>
     <input type="submit" id="submit" value="Submit Changes" />
 	</form>
 </div>

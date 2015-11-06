@@ -1,17 +1,21 @@
 angular.module("DiplomacyApp")
 .controller('PlayerShowCtrl', function($scope, $routeParams, $location, playerShow){
-	$scope.playerId = $routeParams.id;	
+	var playerId = $routeParams.id;	
 	
-	playerShow.loadPlayer($scope.playerId);
+	playerShow.loadPlayer(playerId);
 
 	$scope.player = playerShow.data;
 
-	$scope.editPlayer = function(playerId){
+	$scope.editPlayer = function(){
 		$location.url('/players/' + playerId + '/edit');
 	};
 
 	$scope.viewGame = function(gameId){
 		$location.url('/games/' + gameId);
+	};
+
+	$scope.deletePlayer = function(){
+		playerShow.deletePlayer(playerId);
 	};
 })
 .$inject = ['$scope','$routeParams', '$location', 'playerShow'];
