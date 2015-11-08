@@ -35,7 +35,6 @@ angular.module("DiplomacyApp")
     $http.delete('/players/' + playerId + '.json')
     .then(function(data){
       console.log('Successfully deleted record.');
-      console.log(data);
       $location.url('/');
     },
     function(){

@@ -1,5 +1,5 @@
 angular.module("DiplomacyApp")
-.controller('PlayersIndexCtrl', function($scope, $routeParams, $location, playerList){
+.controller('PlayersIndexCtrl', function($scope, $routeParams, $location, $q, playerList){
 	$scope.players = playerList.data;
 	playerList.loadPlayers();
 
@@ -8,13 +8,19 @@ angular.module("DiplomacyApp")
 	};
 
 	$scope.state = true;
+	$scope.newPlayer = { name: '' };
+
 	$scope.presence = function(){
 		$scope.state = $scope.state === true ? false : true;
 	};
 
-	$scope.newPlayer = { name: '' };
 	$scope.addPlayer = function(){
 		playerList.addPlayer($scope.newPlayer);
 	};
+
+	var clearForm = function(){
+		$scope.newPlayer.name = '';
+	};
+
 })
-.$inject = ['$scope','$routeParams', '$location', 'playerList'];
+.$inject = ['$scope','$routeParams', '$location', '$q', 'playerList'];
