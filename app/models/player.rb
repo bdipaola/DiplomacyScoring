@@ -2,14 +2,16 @@ class Player < ActiveRecord::Base
 	has_many :games
 	has_many :boards, through: :games
 
-	before_save :set_default_total_score
+	before_save :set_default_total_score_rank
 
 	after_destroy do
 		Player.set_ranks
 	end
 
-	def set_default_total_score
+	def set_default_total_score_rank
 		self.assign_attributes(total_score: 0.00) if total_score.blank?
+		players = Player.count
+		self.assign_attributes(rank: players + 1) if rank.blank?
 	end
 
 	def self.calculate_scores
