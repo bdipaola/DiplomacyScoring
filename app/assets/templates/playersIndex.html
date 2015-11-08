@@ -19,7 +19,7 @@
 		     </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="player in players.players" playerinfo="player" ng-click="viewPlayer(player.id)"></tr>
+		    <tr ng-repeat="player in players.players | orderBy: ['rank', '-total_score']" playerinfo="player" ng-click="viewPlayer(player.id)"></tr>
 		  </tbody>
 		</table>
 	</div>

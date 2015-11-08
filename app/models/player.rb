@@ -2,30 +2,45 @@ class Player < ActiveRecord::Base
 	has_many :games
 	has_many :boards, through: :games
 
-	before_save :set_default_total_score_rank
+	before_save :set_default_rank
 
 	after_destroy do
 		Player.set_ranks
 	end
 
-	def set_default_total_score_rank
-		self.assign_attributes(total_score: 0.00) if total_score.blank?
-		players = Player.count
-		self.assign_attributes(rank: players + 1) if rank.blank?
+	def set_default_rank
+		player = Player.order(total_score: :asc).first
+		count = Player.count
+		if !player
+			self.assign_attributes(rank: count + 1) if rank.blank?
+		elsif player && (player.total_score === self.total_score)
+			self.assign_attributes(rank: player.rank) if rank.blank?
+		else
+			self.assign_attributes(rank: player.rank + 1) if rank.blank?
+		end
 	end
 
 	def self.calculate_scores
 		Player.all.each do |player|
 			player_game_scores = Game.where(player: player).map{ |game| game.score }
 			player_game_scores.sort!{ |x,y| x<=>y }
-			player.update(total_score: player_game_scores.first(3).reduce(:+))
+			if player_game_scores.count
+				player.update(total_score: player_game_scores.first(3).reduce(:+))
+			else
+				player.update(total_score: 0)
+			end
 		end
 	end
 
 	def self.set_ranks
 		sorted_players = Player.order(total_score: :desc)
-		sorted_players.each_with_index do |player, index|
-			player.update(rank: index + 1)
+		reset_players_rank = sorted_players.each { |player| player.assign_attributes(rank: 0) }
+		reset_players_rank.each_with_index do |player, index|
+			if player.total_score == reset_players_rank[index - 1].total_score
+				player.update(rank: reset_players_rank[index - 1].rank)
+			else
+				player.update(rank: reset_players_rank[index - 1].rank + 1)
+			end
 		end
 	end
 
