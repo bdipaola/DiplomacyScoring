@@ -6,6 +6,21 @@ class PlayersController < ApplicationController
     end
 	end
 
+	def create
+		player = Player.new(name: params[:player][:name])
+
+		if player.valid?
+      player.save!
+    else
+      render "public/422", :status => 422
+      return
+    end
+
+		respond_to do |format|
+      format.json { render json: player }
+    end
+	end
+
 	def show
 		player = Player.find(params[:id])
 		games = Game.where(player_id: player.id)
@@ -18,7 +33,7 @@ class PlayersController < ApplicationController
 
 	def update
 		player = Player.find(params[:id])
-		player.update(name: params[:name], total_score: params[:total_score])
+		player.update(name: params[:player][:name])
 		respond_to do |format|
       format.json { render json: player }
     end
@@ -34,7 +49,7 @@ class PlayersController < ApplicationController
 
 	private
 	def player_params
-		params.require(:player).permit(:name, :total_score)
+		params.require(:player).permit(:name)
 	end
 
 
