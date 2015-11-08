@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
 	def index
-		players = Player.all
+		players = Player.order('total_score DESC, name')
 		respond_to do |format|
       format.json { render json: players }
     end
