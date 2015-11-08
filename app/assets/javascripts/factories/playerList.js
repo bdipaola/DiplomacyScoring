@@ -16,7 +16,7 @@ angular.module("DiplomacyApp")
     })
     .error(function(){
       console.error('Failed to load player list.');
-    })
+    });
 	};
 
   playerList.addPlayer = function(newPlayer){
