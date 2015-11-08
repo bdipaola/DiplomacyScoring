@@ -9,9 +9,5 @@ angular.module("DiplomacyApp")
 		var playerData = {id: $scope.player.player.id, name: $scope.player.player.name, total_score: $scope.player.player.total_score};
 		playerShow.updatePlayer(playerData);
 	};
-
-	$scope.deletePlayer = function(){
-		playerShow.deletePlayer();
-	};
 })
 .$inject = ['$scope','$routeParams', '$location', 'playerShow'];

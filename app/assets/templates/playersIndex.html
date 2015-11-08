@@ -1,5 +1,14 @@
 <div class="container">
-	<h1>Players</h1><br>
+	<div class="row">
+		<div class="col-sm-1">
+			<h3>Players</h3>
+		</div>
+		<div class="col-sm-11">
+			<h3><button class="btn btn-default" ng-show="state===true" ng-click="presence()">Add Player</button></h3>
+			<add-player ng-hide="state===true"></add-player>
+		</div>
+	</div>
+	<br>
 	<div class="row">
 		<table class="table table-hover">
 		  <thead>

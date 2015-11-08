@@ -6,5 +6,15 @@ angular.module("DiplomacyApp")
 	$scope.viewPlayer = function(playerId){
 		$location.url('/players/' + playerId);
 	};
+
+	$scope.state = true;
+	$scope.presence = function(){
+		$scope.state = $scope.state === true ? false : true;
+	};
+
+	$scope.newPlayer = { name: '' };
+	$scope.addPlayer = function(){
+		playerList.addPlayer($scope.newPlayer);
+	};
 })
 .$inject = ['$scope','$routeParams', '$location', 'playerList'];

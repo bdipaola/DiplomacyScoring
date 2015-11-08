@@ -1,12 +1,12 @@
 angular.module("DiplomacyApp")
 .controller('PlayerShowCtrl', function($scope, $routeParams, $location, playerShow){
-	var playerId = $routeParams.id;	
+	$scope.playerId = $routeParams.id;	
 	
-	playerShow.loadPlayer(playerId);
+	playerShow.loadPlayer($scope.playerId);
 
 	$scope.player = playerShow.data;
 
-	$scope.editPlayer = function(){
+	$scope.editPlayer = function(playerId){
 		$location.url('/players/' + playerId + '/edit');
 	};
 
@@ -14,7 +14,7 @@ angular.module("DiplomacyApp")
 		$location.url('/games/' + gameId);
 	};
 
-	$scope.deletePlayer = function(){
+	$scope.deletePlayer = function(playerId){
 		playerShow.deletePlayer(playerId);
 	};
 })
