@@ -41,6 +41,6 @@ angular.module("DiplomacyApp")
       console.error('Failed to delete record.');
     });
   }
-
+  
 	return playerData;
 }]);

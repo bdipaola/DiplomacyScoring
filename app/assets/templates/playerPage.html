@@ -18,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="game in player.player.games | orderBy: 'board_number'" ng-click="viewGame(game.board_id)">
+				<tr ng-repeat="game in player.player.games | orderBy: 'board_number'" ng-click="viewBoard(game.board_number)">
 				  <td>{{game.board_number}}</td>
 				  <td>{{game.center_count}}</td>
 				  <td>{{game.score}}</td>
