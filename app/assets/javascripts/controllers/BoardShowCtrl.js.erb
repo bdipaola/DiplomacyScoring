@@ -1,8 +1,18 @@
 angular.module("DiplomacyApp")
-.controller('GameShowCtrl', function($scope, $routeParams, $location, boardShow){
-	$scope.boardId = $routeParams.id;	
+.controller('BoardShowCtrl', function($scope, $routeParams, $location, boardShow, playerShow){
+	var boardNumber = $routeParams.id;
 	
+	$scope.board = boardShow;	
 
-	
+	boardShow.loadBoard(boardNumber);
+
+	$scope.viewPlayer = function(playerId){
+		$location.url('/players/' + playerId);
+	};
+
+	$scope.editBoard = function(boardId){
+		$location.url('/players/' + boardId + '/edit');
+	};
+
 })
-.$inject = ['$scope','$routeParams', '$location', 'boardShow'];
+.$inject = ['$scope','$routeParams', '$location', 'boardShow', 'playerShow'];
