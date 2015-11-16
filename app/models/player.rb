@@ -51,7 +51,7 @@ class Player < ActiveRecord::Base
 			total_score: self.total_score,
 			games: []
 		}
-		games.each { |game| player_hash[:games] << { board_number: game.board.number, location: game.board.location, center_count: game.center_count, score: game.score, country: game.country } }
+		games.each { |game| player_hash[:games] << { board_id: game.board_id, board_number: game.board.number, location: game.board.location, center_count: game.center_count, score: game.score, country: game.country } }
 		player_hash
 	end
 

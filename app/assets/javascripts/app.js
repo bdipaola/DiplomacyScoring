@@ -4,7 +4,8 @@ angular.module("DiplomacyApp", ['ngRoute'])
     $routeProvider
       .when('/', { templateUrl: '../assets/playersIndex.html', controller: 'PlayersIndexCtrl' } )
 			.when('/players/:id', { templateUrl: '../assets/playerPage.html', controller: 'PlayerShowCtrl' } )
-			.when('/players/:id/edit', { templateUrl: '../assets/editPlayer.html', controller: 'PlayerEditCtrl' } )			      
+			.when('/players/:id/edit', { templateUrl: '../assets/editPlayer.html', controller: 'PlayerEditCtrl' } )	
+			.when('/boards/:id', { templateUrl: '../assets/boardPage.html', controller: 'BoardShowCtrl' } )			      
       .otherwise( {templateUrl: '../assets/playersIndex.html', controller: 'PlayersIndexCtrl'} );
   }
 ])
