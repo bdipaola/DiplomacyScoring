@@ -1,5 +1,5 @@
 angular.module("DiplomacyApp")
-.controller('BoardShowCtrl', function($scope, $routeParams, $location, boardShow, playerShow){
+.controller('BoardShowCtrl', function($scope, $routeParams, $location, boardShow){
 	var boardNumber = $routeParams.id;
 	
 	$scope.board = boardShow;	
@@ -11,8 +11,8 @@ angular.module("DiplomacyApp")
 	};
 
 	$scope.editBoard = function(boardId){
-		$location.url('/players/' + boardId + '/edit');
+		$location.url('/boards/' + boardId + '/edit');
 	};
 
 })
-.$inject = ['$scope','$routeParams', '$location', 'boardShow', 'playerShow'];
+.$inject = ['$scope','$routeParams', '$location', 'boardShow'];

@@ -15,4 +15,20 @@ class BoardsController < ApplicationController
     end
 	end
 
+	def update
+		board = Board.find(params[:board_number])
+		board.update(location: params[:board_location])
+
+		players = params[:players]
+
+		players.each do |player|
+			game_record = Game.find_by(player_id: player[:player_id])
+			game_record.update(country: player[:country], center_count: player[:center_count], open_move: player[:open_move]) 
+		end
+
+		respond_to do |format|
+      format.json { render json: board }
+    end
+	end
+
 end
