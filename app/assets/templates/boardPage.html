@@ -1,7 +1,6 @@
 <div class="container">
-	<h1>Board number {{board.data.board_number}}
-	<small>Game Location: {{board.data.board_location}}</small></h1>
-	<button class="btn btn-default">Edit Board</button>
+	<h1>Board number {{board.data.board_number}} <small>Game Location: {{board.data.board_location}}</small></h1>
+	<button class="btn btn-default" ng-click="editBoard(board.data.board_number)">Edit Board</button>
 	<button class="btn btn-default">Delete Board</button>
 	<br>
 	<div class="panel panel-default">

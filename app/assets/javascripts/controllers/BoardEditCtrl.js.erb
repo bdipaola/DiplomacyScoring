@@ -1,0 +1,14 @@
+angular.module("DiplomacyApp")
+.controller('BoardEditCtrl', function($scope, $routeParams, $location, boardShow){
+	var boardNumber = $routeParams.id;
+	
+	$scope.board = boardShow.data;	
+
+	boardShow.loadBoard(boardNumber);
+
+	$scope.updateBoard = function(){
+		var boardData = $scope.board;
+		boardShow.updateBoard(boardData);
+	}
+})
+.$inject = ['$scope','$routeParams', '$location', 'boardShow'];
